@@ -283,6 +283,70 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\themes\css\bootstrappage.css" />
+    <Content Include="Content\themes\css\flexslider.css" />
+    <Content Include="Content\themes\css\jquery.fancybox.css" />
+    <Content Include="Content\themes\css\main.css" />
+    <Content Include="Content\themes\images\arrow-p.png" />
+    <Content Include="Content\themes\images\arrow-pleft.png" />
+    <Content Include="Content\themes\images\bg.png" />
+    <Content Include="Content\themes\images\carousel\banner-1.jpg" />
+    <Content Include="Content\themes\images\carousel\banner-2.jpg" />
+    <Content Include="Content\themes\images\clients\1.png" />
+    <Content Include="Content\themes\images\clients\14.png" />
+    <Content Include="Content\themes\images\clients\2.png" />
+    <Content Include="Content\themes\images\clients\3.png" />
+    <Content Include="Content\themes\images\clients\35.png" />
+    <Content Include="Content\themes\images\clients\4.png" />
+    <Content Include="Content\themes\images\cloth\2.jpg" />
+    <Content Include="Content\themes\images\cloth\37.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware1.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware2.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware3.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware4.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware5.jpg" />
+    <Content Include="Content\themes\images\cloth\bootstrap-women-ware6.jpg" />
+    <Content Include="Content\themes\images\feature_img_1.png" />
+    <Content Include="Content\themes\images\feature_img_2.png" />
+    <Content Include="Content\themes\images\feature_img_3.png" />
+    <Content Include="Content\themes\images\gotop.png" />
+    <Content Include="Content\themes\images\ladies\1.jpg" />
+    <Content Include="Content\themes\images\ladies\2.jpg" />
+    <Content Include="Content\themes\images\ladies\3.jpg" />
+    <Content Include="Content\themes\images\ladies\4.jpg" />
+    <Content Include="Content\themes\images\ladies\5.jpg" />
+    <Content Include="Content\themes\images\ladies\6.jpg" />
+    <Content Include="Content\themes\images\ladies\7.jpg" />
+    <Content Include="Content\themes\images\ladies\8.jpg" />
+    <Content Include="Content\themes\images\ladies\9.jpg" />
+    <Content Include="Content\themes\images\line_bar.png" />
+    <Content Include="Content\themes\images\logo.png" />
+    <Content Include="Content\themes\images\m1.png" />
+    <Content Include="Content\themes\images\m2.png" />
+    <Content Include="Content\themes\images\m3.png" />
+    <Content Include="Content\themes\images\m4.png" />
+    <Content Include="Content\themes\images\m5.png" />
+    <Content Include="Content\themes\images\m6.png" />
+    <Content Include="Content\themes\images\pageBanner.png" />
+    <Content Include="Content\themes\images\project_img2.jpg" />
+    <Content Include="Content\themes\images\project_img3.jpg" />
+    <Content Include="Content\themes\images\project_img4.jpg" />
+    <Content Include="Content\themes\images\project_img6.jpg" />
+    <Content Include="Content\themes\js\common.js" />
+    <Content Include="Content\themes\js\css\style.css" />
+    <Content Include="Content\themes\js\jquery-1.7.2.min.js" />
+    <Content Include="Content\themes\js\jquery.fancybox.js" />
+    <Content Include="Content\themes\js\jquery.flexslider-min.js" />
+    <Content Include="Content\themes\js\jquery.scrolltotop.js" />
+    <Content Include="Content\themes\js\superfish.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -357,9 +421,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_HomeUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\themes\js\images\" />
+    <Folder Include="Content\themes\js\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -371,6 +438,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

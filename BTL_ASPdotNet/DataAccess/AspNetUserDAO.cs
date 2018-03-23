@@ -7,5 +7,6 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class AspNetUserDAO
     {
+
     }
 }
