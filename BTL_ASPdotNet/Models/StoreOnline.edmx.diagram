@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4611fb1e6dc4941bbef241d11550ef3" Name="Diagram1">
+        <EntityTypeShape EntityType="BTLWebASPModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.AspNetUser" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.Category" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.Country" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.GroupProduct" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.MailBox" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.Order" Width="1.5" PointX="10.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.OrderDet" Width="1.5" PointX="12.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.Product" Width="1.5" PointX="10.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLWebASPModel.sysdiagram" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="BTLWebASPModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.FK_Nhomsp_PhanLoai" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.FK_SanPham_Nhomsp" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.FK_DatHangCT_DatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.FK_DatHangCT_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="BTLWebASPModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
