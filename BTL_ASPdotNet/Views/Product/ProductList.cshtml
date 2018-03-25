@@ -1,0 +1,35 @@
+﻿@using System.Globalization
+@model IEnumerable<BTL_ASPdotNet.Models.Product>
+@{
+	ViewBag.Title = "Products";
+	Layout = "~/Views/Shared/_UserView.cshtml";
+}
+
+<div class="span9">
+	<ul class="thumbnails listing-products">
+		@foreach (var item in Model)
+		{
+			<li class="span3">
+				<div class="product-box">
+					<span class="sale_tag"></span>
+					<a href="product_detail.html"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+					<a href="product_detail.html" class="title">@item.ProductName</a><br />
+					<a href="#" class="category">@item.GroupProduct.GroupName</a>
+					<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.Price)) vnđ</p>
+				</div>
+			</li>
+		}
+	</ul>
+	<hr>
+	<div class="pagination pagination-small pagination-centered">
+		<ul>
+			<li><a href="#">Prev</a></li>
+			<li class="active"><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">Next</a></li>
+		</ul>
+	</div>
+</div>
+

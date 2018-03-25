@@ -35,5 +35,12 @@ namespace BTL_ASPdotNet.DataAccess
         /// <param name="obj"></param>
         /// <returns></returns>
         T Delete(T obj);
+
+        /// <summary>
+        /// Tìm 1 đối tượng theo ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        T FindByID(object ID);
     }
 }

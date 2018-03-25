@@ -21,7 +21,7 @@ else
     <ul class="user-menu">
 		<li><a href="cart.html">Your Cart</a></li>
 		<li><a href="checkout.html">Checkout</a></li>
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Account", null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", new { @returnUrl = Request.Url.PathAndQuery }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

@@ -53,13 +53,6 @@ namespace BTL_ASPdotNet.Controllers
             }
         }
 
-        [AllowAnonymous]
-        public ActionResult LoginAndRegister(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
 
         //
         // GET: /Account/Login
