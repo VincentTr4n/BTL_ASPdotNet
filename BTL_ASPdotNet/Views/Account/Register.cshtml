@@ -1,41 +1,60 @@
 ﻿@model BTL_ASPdotNet.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+	Layout = "/Views/Shared/_HomeUser.cshtml";
+	ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<section class="header_text sub">
+	<img class="pageBanner" src="~/Content/themes/images/pageBanner.png" alt="New products">
+	<h4><span>Login</span></h4>
+</section>
+<section class="main-content">
+	<div class="row">
+		<div class="span5">
+			<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+			@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+			{
+				<fieldset>
+					@Html.AntiForgeryToken()
+					@Html.ValidationSummary("", new { @class = "text-danger" })
+					<div class="control-group">
+						<label class="control-label">Username</label>
+						<div class="controls">
+							@Html.TextBoxFor(m => m.UserName, new { @class = "input-xlarge", placeholder = "Enter your username" })
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Email address:</label>
+						<div class="controls">
+							@*<input type="password" placeholder="Enter your email" class="input-xlarge">*@
+							@Html.TextBoxFor(m => m.Email, new { @class = "input-xlarge", placeholder = "Enter your email" })
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Password:</label>
+						<div class="controls">
+							@*<input type="password" placeholder="Enter your password" class="input-xlarge">*@
+							@Html.PasswordFor(m => m.Password, new { @class = "input-xlarge", placeholder = "Enter your password" })
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Confirm Password:</label>
+						<div class="controls">
+							@*<input type="password" placeholder="Enter your password" class="input-xlarge">*@
+							@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-xlarge", placeholder = "Enter your confirm password" })
+						</div>
+					</div>
+					<div class="control-group">
+						<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can tell who the arch-villain's going to be?</p>
+					</div>
+					<hr>
+					<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
+				</fieldset>
+			}
+		</div>
+		<div class="span7">
+			<h4 class="title"><span class="text"><strong>Welcome to</strong> My website</span></h4>
+			<img src="~/Content/themes/images/project_img3.jpg" alt="Alternate Text" />
+		</div>
+	</div>
+</section>

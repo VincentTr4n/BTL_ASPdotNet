@@ -12,7 +12,7 @@
 	<link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="~/Content/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-	<link href="themes/css/bootstrappage.css" rel="stylesheet" />
+	<link href="~/Content/themes/css/bootstrappage.css" rel="stylesheet" />
 
 	<!-- global styles -->
 	<link href="~/Content/themes/css/flexslider.css" rel="stylesheet" />
@@ -23,6 +23,7 @@
 	<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="~/Content/themes/js/superfish.js"></script>
 	<script src="~/Content/themes/js/jquery.scrolltotop.js"></script>
+	
 </head>
 <body>
 	<div id="top-bar" class="container">
@@ -42,7 +43,7 @@
 	<div id="wrapper" class="container">
 		<section class="navbar main-menu">
 			<div class="navbar-inner main-menu">
-				<a href="index.html" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
+				<a href="@Url.Action("Index", "Home")" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 					<ul>
 						<li>
