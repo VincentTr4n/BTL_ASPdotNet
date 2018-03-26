@@ -77,6 +77,6 @@ D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\bin\Microsoft.Owin.Sec
 D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\bin\Microsoft.Owin.Security.Google.xml
 D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\bin\Microsoft.Owin.Security.Twitter.xml
 D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\obj\Debug\BTL_ASPdotNet.csprojResolveAssemblyReference.cache
 D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\obj\Debug\BTL_ASPdotNet.dll
 D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\obj\Debug\BTL_ASPdotNet.pdb
+D:\MyWorkSpace\CODE_ASPdotNET\BTL_ASPdotNet\BTL_ASPdotNet\obj\Debug\BTL_ASPdotNet.csprojResolveAssemblyReference.cache

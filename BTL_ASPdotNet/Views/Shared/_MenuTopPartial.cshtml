@@ -1,0 +1,16 @@
+﻿@model IEnumerable<BTL_ASPdotNet.Models.Category>
+
+@foreach (var item in Model)
+{
+	<li>
+		<a href="@Url.Action("ProductList", "Product", new { page = 1, state = "view" ,category = item.Aliases })">@item.CategoryName</a>
+		<ul>
+			@foreach (var group in item.GroupProducts)
+			{
+				<li><a href="@Url.Action("ProductList", "Product", new { page = 1, state = "view", category = group.Aliases })">@group.GroupName</a></li>
+			}
+		</ul>
+	</li>
+}
+
+

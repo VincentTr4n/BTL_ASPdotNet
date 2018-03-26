@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
@@ -27,8 +26,8 @@
 	
 	<style>
 		.product-box img {
-			width: 342px;
-			height: 342px;
+			width: 250px;
+			height: 250px;
 		}
 	</style>
 
@@ -55,26 +54,9 @@
 				<a href="@Url.Action("Index", "Home")" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 					<ul>
-						<li>
-							<a href="./products.html">Woman</a>
-							<ul>
-								<li><a href="./products.html">Lacinia nibh</a></li>
-								<li><a href="./products.html">Eget molestie</a></li>
-								<li><a href="./products.html">Varius purus</a></li>
-							</ul>
-						</li>
-						<li><a href="./products.html">Man</a></li>
-						<li>
-							<a href="./products.html">Sport</a>
-							<ul>
-								<li><a href="./products.html">Gifts and Tech</a></li>
-								<li><a href="./products.html">Ties and Hats</a></li>
-								<li><a href="./products.html">Cold Weather</a></li>
-							</ul>
-						</li>
-						<li><a href="./products.html">Hangbag</a></li>
-						<li><a href="./products.html">Best Seller</a></li>
-						<li><a href="./products.html">Top Seller</a></li>
+						@Html.Partial("_MenuTopPartial",BTL_ASPdotNet.Services.CategoryService.GetAll());
+						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "all", category = ""})">All Product</a></li>
+						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "top", category = ""})">Top Seller</a></li>
 					</ul>
 				</nav>
 			</div>

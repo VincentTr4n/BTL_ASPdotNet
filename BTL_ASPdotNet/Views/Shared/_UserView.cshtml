@@ -54,26 +54,9 @@
 				<a href="@Url.Action("Index", "Home")" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 					<ul>
-						<li>
-							<a href="./products.html">Woman</a>
-							<ul>
-								<li><a href="./products.html">Lacinia nibh</a></li>
-								<li><a href="./products.html">Eget molestie</a></li>
-								<li><a href="./products.html">Varius purus</a></li>
-							</ul>
-						</li>
-						<li><a href="./products.html">Man</a></li>
-						<li>
-							<a href="./products.html">Sport</a>
-							<ul>
-								<li><a href="./products.html">Gifts and Tech</a></li>
-								<li><a href="./products.html">Ties and Hats</a></li>
-								<li><a href="./products.html">Cold Weather</a></li>
-							</ul>
-						</li>
-						<li><a href="./products.html">Hangbag</a></li>
-						<li><a href="./products.html">Best Seller</a></li>
-						<li><a href="./products.html">Top Seller</a></li>
+						@Html.Partial("_MenuTopPartial", BTL_ASPdotNet.Services.CategoryService.GetAll());
+						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "all", category = ""})">All Product</a></li>
+						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "top", category = ""})">Top Seller</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -87,22 +70,22 @@
 				@RenderBody()
 				<div class="span3 col">
 					<div class="block">
-						<ul class="nav nav-list">
+						<ul class="nav nav-list" id="ulSubCategory">
 							<li class="nav-header">SUB CATEGORIES</li>
-							<li><a href="products.html">Nullam semper elementum</a></li>
-							<li class="active"><a href="products.html">Phasellus ultricies</a></li>
-							<li><a href="products.html">Donec laoreet dui</a></li>
-							<li><a href="products.html">Nullam semper elementum</a></li>
-							<li><a href="products.html">Phasellus ultricies</a></li>
-							<li><a href="products.html">Donec laoreet dui</a></li>
+							<li><a href="#">Nullam semper elementum</a></li>
+							<li><a href="#">Phasellus ultricies</a></li>
+							<li><a href="#">Donec laoreet dui</a></li>
+							<li><a href="#">Nullam semper elementum</a></li>
+							<li><a href="#">Phasellus ultricies</a></li>
+							<li><a href="#">Donec laoreet dui</a></li>
 						</ul>
 						<br />
 						<ul class="nav nav-list below">
 							<li class="nav-header">MANUFACTURES</li>
-							<li><a href="products.html">Adidas</a></li>
-							<li><a href="products.html">Nike</a></li>
-							<li><a href="products.html">Dunlop</a></li>
-							<li><a href="products.html">Yamaha</a></li>
+							<li><a href="#">Adidas</a></li>
+							<li><a href="#">Nike</a></li>
+							<li><a href="#">Dunlop</a></li>
+							<li><a href="#">Yamaha</a></li>
 						</ul>
 					</div>
 					<div class="block">
@@ -218,6 +201,13 @@
 					controlNav: false,
 					directionNav: true,
 					controlsContainer: ".flex-container" // the container that holds the flexslider
+				});
+
+				$('#ulSubCategory li').each(function (i) {
+					$(this).on('click', function () {
+						$('#ulSubCategory li.active').removeClass('active');
+						$(this).addClass('active');
+					})
 				});
 			});
 		});

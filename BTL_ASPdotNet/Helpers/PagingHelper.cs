@@ -19,10 +19,10 @@ namespace BTL_ASPdotNet.Helpers
                 tag.InnerHtml = i + "";
                 if (i == pagingInfo.CurrentPage)
                 {
-                    tag.AddCssClass("active");
+                    li.AddCssClass("active");
                 }
-                builder.Append(tag.ToString());
                 li.InnerHtml = tag.ToString(TagRenderMode.Normal);
+                builder.Append(li.ToString());
             }
 
             return MvcHtmlString.Create(builder.ToString());
