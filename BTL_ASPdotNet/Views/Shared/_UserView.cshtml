@@ -163,11 +163,12 @@
 				<div class="span3">
 					<h4>Navigation</h4>
 					<ul class="nav">
-						<li><a href="Index">Homepage</a></li>
-						<li><a href="About">About Us</a></li>
-						<li><a href="contact">Contac Us</a></li>
-						<li><a href="./cart.html">Your Cart</a></li>
-						<li><a href="./register.html">Login</a></li>
+						li>
+						<a href="@Url.Action("Index","Home")">Homepage</a></li>
+						<li><a href="@Url.Action("About","Home")">About Us</a></li>
+						<li><a href="@Url.Action("Contact","Home")">Contac Us</a></li>
+						<li><a href="#">Your Cart</a></li>
+						<li><a href="@Url.Action("Login","Account")">Login</a></li>
 					</ul>
 				</div>
 				<div class="span4">

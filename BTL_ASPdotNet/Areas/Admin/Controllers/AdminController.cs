@@ -9,7 +9,6 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        // GET: Admin/Admin
         public ActionResult Index()
         {
             return View();

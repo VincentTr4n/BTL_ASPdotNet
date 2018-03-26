@@ -16,7 +16,7 @@ namespace BTL_ASPdotNet.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "Master/{controller}/{action}/{id}",
+                "Master",
                 new { controller = "Admin", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
             );

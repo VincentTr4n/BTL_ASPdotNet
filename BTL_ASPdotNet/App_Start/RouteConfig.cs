@@ -56,7 +56,7 @@ namespace BTL_ASPdotNet
 
             routes.MapRoute(
                 name: "Default5",
-                url: "{action}",
+                url: "Account/{action}",
                 defaults: new { controller = "Account", action = UrlParameter.Optional }
             );
 
