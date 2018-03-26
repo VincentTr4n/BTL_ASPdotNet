@@ -10,6 +10,7 @@ namespace BTL_ASPdotNet.Services
     public class ProductService
     {
         static IProductDAO productDAO = new ProductDAO();
+
         public static IEnumerable<Product> GetAll() => productDAO.GetAll();
         public static Product FindByAliases(string aliases) => productDAO.FindByAliases(aliases);
         public static Product FindByID(int ID) => productDAO.FindByID(ID);
@@ -17,6 +18,14 @@ namespace BTL_ASPdotNet.Services
         public static IEnumerable<Product> FeatureProducts() => productDAO.GetAll().OrderByDescending(p => p.Price).Take(8);
         public static IEnumerable<Product> TopSeller() => productDAO.TopSeller();
         public static IEnumerable<Product> GetByCategory(string category) => productDAO.GetByCategory(category);
+        public static IEnumerable<Product> GetRandomize()
+        {
+            var list = GetAll();
+            Random rnd = new Random();
+            int cnt = list.Count();
+            int max = cnt - 5;
+            return list.Skip(rnd.Next(1, max)).Take(4);
+        }
         public static ProductsViewModel Paging(int page, int size, IEnumerable<Product> all)
             => new ProductsViewModel()
             {

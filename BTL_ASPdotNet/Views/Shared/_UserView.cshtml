@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-
+@using System.Globalization
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
@@ -27,9 +27,9 @@
 
 
 	<style>
-		.product-box img{
-			width : 342px;
-			height : 342px;
+		.product-box img {
+			width: 342px;
+			height: 342px;
 		}
 	</style>
 </head>
@@ -54,7 +54,7 @@
 				<a href="@Url.Action("Index", "Home")" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 					<ul>
-						@Html.Partial("_MenuTopPartial", BTL_ASPdotNet.Services.CategoryService.GetAll());
+						@Html.Partial("_MenuTopPartial", BTL_ASPdotNet.Services.CategoryService.GetAll())
 						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "all", category = ""})">All Product</a></li>
 						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "top", category = ""})">Top Seller</a></li>
 					</ul>
@@ -72,12 +72,10 @@
 					<div class="block">
 						<ul class="nav nav-list" id="ulSubCategory">
 							<li class="nav-header">SUB CATEGORIES</li>
-							<li><a href="#">Nullam semper elementum</a></li>
-							<li><a href="#">Phasellus ultricies</a></li>
-							<li><a href="#">Donec laoreet dui</a></li>
-							<li><a href="#">Nullam semper elementum</a></li>
-							<li><a href="#">Phasellus ultricies</a></li>
-							<li><a href="#">Donec laoreet dui</a></li>
+							@foreach (var item in ViewBag.MenuLeft)
+							{
+								<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "view", category = item.Key})">@item.Value</a></li>
+							}
 						</ul>
 						<br />
 						<ul class="nav nav-list below">
@@ -97,31 +95,40 @@
 						</h4>
 						<div id="myCarousel" class="carousel slide">
 							<div class="carousel-inner">
-								<div class="active item">
-									<ul class="thumbnails listing-products">
-										<li class="span3">
-											<div class="product-box">
-												<span class="sale_tag"></span>
-												<img alt="" src="~/Content/themes/images/ladies/1.jpg"><br />
-												<a href="product_detail.html" class="title">Fusce id molestie massa</a><br />
-												<a href="#" class="category">Suspendisse aliquet</a>
-												<p class="price">$261</p>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="item">
-									<ul class="thumbnails listing-products">
-										<li class="span3">
-											<div class="product-box">
-												<img alt="" src="~/Content/themes/images/ladies/2.jpg"><br />
-												<a href="product_detail.html" class="title">Tempor sem sodales</a><br />
-												<a href="#" class="category">Urna nec lectus mollis</a>
-												<p class="price">$134</p>
-											</div>
-										</li>
-									</ul>
-								</div>
+								@{
+									IEnumerable<BTL_ASPdotNet.Models.Product> list = (IEnumerable<BTL_ASPdotNet.Models.Product>)ViewBag.Randomize;
+									var item1 = list.FirstOrDefault();
+									<div class="active item">
+										<ul class="thumbnails listing-products">
+											<li class="span3">
+												<div class="product-box">
+													<span class="sale_tag"></span>
+													<a href="@Url.Action("ProductDetail", "Product", new { aliases = item1.GroupProduct.Aliases, @ID = item1.ProductID })"><img alt="" src="~/Content/ProductImages/@(item1.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+													<a href="@Url.Action("ProductDetail", "Product", new { aliases = item1.GroupProduct.Aliases, @ID = item1.ProductID })" class="title">@(item1.ProductName.Split(':').Length > 1 ? item1.ProductName.Split(':')[1] : item1.ProductName )</a><br />
+													<a href="#" class="category">@item1.GroupProduct.GroupName</a>
+													<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item1.Price)) vnđ</p>
+												</div>
+											</li>
+										</ul>
+									</div>
+									list = list.Skip(1).Take(3);
+									foreach (var product in list)
+									{
+										<div class="item">
+											<ul class="thumbnails listing-products">
+												<li class="span3">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<a href="@Url.Action("ProductDetail", "Product", new { aliases = product.GroupProduct.Aliases, @ID = product.ProductID })"><img alt="" src="~/Content/ProductImages/@(product.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+														<a href="@Url.Action("ProductDetail", "Product", new { aliases = product.GroupProduct.Aliases, @ID = product.ProductID })" class="title">@(product.ProductName.Split(':').Length > 1 ? product.ProductName.Split(':')[1] : product.ProductName )</a><br />
+														<a href="#" class="category">@product.GroupProduct.GroupName</a>
+														<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", product.Price)) vnđ</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+									}
+								}
 							</div>
 						</div>
 					</div>

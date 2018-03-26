@@ -54,7 +54,7 @@
 				<a href="@Url.Action("Index", "Home")" class="logo pull-left"><img src="~/Content/themes/images/logo.png" class="site_logo" alt=""></a>
 				<nav id="menu" class="pull-right">
 					<ul>
-						@Html.Partial("_MenuTopPartial",BTL_ASPdotNet.Services.CategoryService.GetAll());
+						@Html.Partial("_MenuTopPartial",BTL_ASPdotNet.Services.CategoryService.GetAll())
 						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "all", category = ""})">All Product</a></li>
 						<li><a href="@Url.Action("ProductList","Product",new { page = 1, state = "top", category = ""})">Top Seller</a></li>
 					</ul>

@@ -53,10 +53,18 @@ namespace BTL_ASPdotNet
                     action = "ProductDetail",
                     aliases = UrlParameter.Optional
                 });
+
             routes.MapRoute(
                 name: "Default5",
                 url: "{action}",
                 defaults: new { controller = "Account", action = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default6",
+                url: "Home/{action}",
+                defaults: new { controller = "Home", action = UrlParameter.Optional },
+                namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
             );
         }
     }

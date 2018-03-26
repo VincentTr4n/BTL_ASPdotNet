@@ -46,8 +46,8 @@
 										<li class="span3">
 											<div class="product-box">
 												<span class="sale_tag"></span>
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })" class="title">@(item.ProductName.Split(':').Length > 1 ? item.ProductName.Split(':')[1] : item.ProductName )</a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })" class="title">@(item.ProductName.Split(':').Length > 1 ? item.ProductName.Split(':')[1] : item.ProductName )</a><br />
 												<a href="#" class="category">@item.GroupProduct.GroupName</a>
 												<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.Price)) vnđ</p>
 											</div>
@@ -62,8 +62,8 @@
 										<li class="span3">
 											<div class="product-box">
 												<span class="sale_tag"></span>
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })" class="title">@(item.ProductName.Split(':').Length > 1 ? item.ProductName.Split(':')[1] : item.ProductName )</a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })" class="title">@(item.ProductName.Split(':').Length > 1 ? item.ProductName.Split(':')[1] : item.ProductName )</a><br />
 												<a href="#" class="category">@item.GroupProduct.GroupName</a>
 												<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.Price)) vnđ</p>
 											</div>
@@ -93,8 +93,8 @@
 										<li class="span3">
 											<div class="product-box">
 												<span class="sale_tag"></span>
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })" class="title">@item.ProductName</a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })" class="title">@item.ProductName</a><br />
 												<a href="#" class="category">@item.GroupProduct.GroupName</a>
 												<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.Price)) vnđ</p>
 											</div>
@@ -109,8 +109,8 @@
 										<li class="span3">
 											<div class="product-box">
 												<span class="sale_tag"></span>
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
-												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.Aliases, @ID = item.ProductID })" class="title">@item.ProductName</a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })"><img alt="" src="~/Content/ProductImages/@(item.Image.Trim().Split('.')[0] + ".jpg")"></a><br />
+												<a href="@Url.Action("ProductDetail", "Product", new { aliases = item.GroupProduct.Aliases, @ID = item.ProductID })" class="title">@item.ProductName</a><br />
 												<a href="#" class="category">@item.GroupProduct.GroupName</a>
 												<p class="price">@(String.Format(CultureInfo.InvariantCulture, "{0:N0}", item.Price)) vnđ</p>
 											</div>
