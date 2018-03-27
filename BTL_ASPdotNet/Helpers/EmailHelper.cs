@@ -34,6 +34,8 @@ namespace BTL_ASPdotNet.Helpers
                 mess.To.Add(new MailAddress(mailToAddress));
                 mess.Subject = subject;
                 mess.Body = content;
+                
+
 
                 client.Send(mess);
             }

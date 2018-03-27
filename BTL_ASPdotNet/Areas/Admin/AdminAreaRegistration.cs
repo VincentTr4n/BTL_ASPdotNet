@@ -20,6 +20,13 @@ namespace BTL_ASPdotNet.Areas.Admin
                 new { controller = "Admin", action = "Index", id = UrlParameter.Optional },
                 namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
             );
+
+            context.MapRoute(
+               "Admin_default",
+               "Profile",
+               new { controller = "Admin", action = "MyProfile", id = UrlParameter.Optional },
+               namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
+           );
         }
     }
 }
