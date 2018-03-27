@@ -290,7 +290,7 @@
 								<!-- Menu Footer-->
 								<li class="user-footer">
 									<div class="pull-left">
-										<a href="#" class="btn btn-default btn-flat">Profile</a>
+										<a href="@Url.Action("MyProfile","Admin",new { @name = User.Identity.Name })" class="btn btn-default btn-flat">Profile</a>
 									</div>
 									<div class="pull-right">
 										<form action="@Url.Action("LogOff","Account", new { area = "" })" method="post">
@@ -514,16 +514,7 @@
 		</aside>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			<section class="content-header">
-				<h1>
-					Dashboard
-					<small>Control panel</small>
-				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">Dashboard</li>
-				</ol>
-			</section>
+			
 			@RenderBody()
 		</div>
 		<!-- /.content-wrapper -->

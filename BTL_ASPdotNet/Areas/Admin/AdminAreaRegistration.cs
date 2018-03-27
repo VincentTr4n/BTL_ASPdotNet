@@ -22,9 +22,9 @@ namespace BTL_ASPdotNet.Areas.Admin
             );
 
             context.MapRoute(
-               "Admin_default",
-               "Profile",
-               new { controller = "Admin", action = "MyProfile", id = UrlParameter.Optional },
+               "Admin_default1",
+               "Master/Profile/{name}",
+               new { controller = "Admin", action = "MyProfile", name = UrlParameter.Optional },
                namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
            );
         }

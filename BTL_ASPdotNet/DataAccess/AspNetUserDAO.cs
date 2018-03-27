@@ -23,6 +23,14 @@ namespace BTL_ASPdotNet.DataAccess
             throw new NotImplementedException();
         }
 
+        public AspNetUser FindByName(string name)
+        {
+            using(StoreOlineEntities db = new StoreOlineEntities())
+            {
+                return db.AspNetUsers.SingleOrDefault(u => u.UserName.Trim() == name);
+            }
+        }
+
         public IEnumerable<AspNetUser> GetAll()
         {
             throw new NotImplementedException();

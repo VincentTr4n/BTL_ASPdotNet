@@ -226,6 +226,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CommonHelpers.cs" />
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -546,6 +547,7 @@
     <Content Include="Content\themes\icons\icon_google.png" />
     <Content Include="Content\themes\icons\icon_in.png" />
     <Content Include="Content\themes\icons\icon_tweet.png" />
+    <Content Include="Content\themes\icons\myavatar.jpg" />
     <Content Include="Content\themes\images\arrow-p.png" />
     <Content Include="Content\themes\images\arrow-pleft.png" />
     <Content Include="Content\themes\images\bg.png" />
@@ -7728,6 +7730,7 @@
     <Content Include="MyResource\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="MyResource\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\MyProfile.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
