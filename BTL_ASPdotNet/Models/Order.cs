@@ -11,7 +11,8 @@ namespace BTL_ASPdotNet.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,13 @@ namespace BTL_ASPdotNet.Models
         }
     
         public int OrderID { get; set; }
+
+        [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Please enter the first address line")]
+        [Display(Name = "Line 1")]
         public string Address { get; set; }
         public string Email { get; set; }
         public System.DateTime OrderDate { get; set; }
@@ -34,6 +40,9 @@ namespace BTL_ASPdotNet.Models
         public Nullable<long> Fax { get; set; }
         public Nullable<int> CountryID { get; set; }
         public Nullable<long> Postcode { get; set; }
+
+        [Required(ErrorMessage = "Please enter a city name")]
+        public string City { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDet> OrderDets { get; set; }

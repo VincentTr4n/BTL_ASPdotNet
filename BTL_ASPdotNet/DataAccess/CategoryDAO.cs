@@ -8,6 +8,7 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class CategoryDAO : ICategoryDAO
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(Category obj)
         {
             throw new NotImplementedException();
@@ -25,7 +26,6 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<Category> GetAll()
         {
-            StoreOlineEntities db = new StoreOlineEntities();
             return db.Categories;
         }
 

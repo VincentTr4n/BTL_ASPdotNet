@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BTL_ASPdotNet.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,7 @@ namespace BTL_ASPdotNet
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(Models.Cart), new CartModelBinder());
         }
     }
 }

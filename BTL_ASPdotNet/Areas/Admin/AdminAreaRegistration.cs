@@ -2,17 +2,17 @@
 
 namespace BTL_ASPdotNet.Areas.Admin
 {
-    public class AdminAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Admin";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Admin_default",
@@ -25,6 +25,13 @@ namespace BTL_ASPdotNet.Areas.Admin
                "Admin_default1",
                "Master/Profile/{name}",
                new { controller = "Admin", action = "MyProfile", name = UrlParameter.Optional },
+               namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
+           );
+
+            context.MapRoute(
+               "Admin_default2",
+               "Master/{controller}/{action}/",
+               new { controller = UrlParameter.Optional, action = UrlParameter.Optional, name = UrlParameter.Optional },
                namespaces: new string[] { "BTL_ASPdotNet.Areas.Admin.Controllers" }
            );
         }

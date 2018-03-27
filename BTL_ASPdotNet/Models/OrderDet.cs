@@ -20,7 +20,7 @@ namespace BTL_ASPdotNet.Models
         public long Price { get; set; }
         public long Total { get; set; }
     
-        public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

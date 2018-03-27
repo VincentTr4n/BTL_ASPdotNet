@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="BTLWebASPModel.Country" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLWebASPModel.GroupProduct" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLWebASPModel.MailBox" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLWebASPModel.Order" Width="1.5" PointX="10.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLWebASPModel.OrderDet" Width="1.5" PointX="12.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLWebASPModel.Product" Width="1.5" PointX="10.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLWebASPModel.sysdiagram" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
@@ -22,9 +21,10 @@
         <AssociationConnector Association="BTLWebASPModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="BTLWebASPModel.FK_Nhomsp_PhanLoai" ManuallyRouted="false" />
         <AssociationConnector Association="BTLWebASPModel.FK_SanPham_Nhomsp" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLWebASPModel.FK_DatHangCT_DatHang" ManuallyRouted="false" />
         <AssociationConnector Association="BTLWebASPModel.FK_DatHangCT_SanPham" ManuallyRouted="false" />
         <AssociationConnector Association="BTLWebASPModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BTLWebASPModel.Order" Width="1.5" PointX="9.75" PointY="1.75" />
+        <AssociationConnector Association="BTLWebASPModel.FK_DatHangCT_DatHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

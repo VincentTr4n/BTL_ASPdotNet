@@ -24,7 +24,7 @@ namespace BTL_ASPdotNet
                 url: "",//"{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
+            #region Product List
             routes.MapRoute(
                 name: "products1",
                 url: "view/{category}/{page}",
@@ -53,6 +53,7 @@ namespace BTL_ASPdotNet
                     action = "ProductDetail",
                     aliases = UrlParameter.Optional
                 });
+            #endregion
 
             routes.MapRoute(
                 name: "Default5",
@@ -66,6 +67,29 @@ namespace BTL_ASPdotNet
                 defaults: new { controller = "Home", action = UrlParameter.Optional },
                 namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
             );
+
+            #region Shopping Cart
+            routes.MapRoute(
+                name: "Default7",
+                url: "your-cart",
+                defaults: new { controller = "Cart", action = "Index" },
+                namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Default8",
+                url: "add-to-cart",
+                defaults: new { controller = "Cart", action = "AddToCart" },
+                namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Default9",
+                url: "remove-from-cart",
+                defaults: new { controller = "Cart", action = "RemoveFromCart" },
+                namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
+            );
+            #endregion
         }
     }
 }

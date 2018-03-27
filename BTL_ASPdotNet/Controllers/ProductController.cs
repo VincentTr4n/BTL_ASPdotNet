@@ -10,9 +10,11 @@ namespace BTL_ASPdotNet.Controllers
     public class ProductController : Controller
     {
         static int size = 12;
+
+        // all-product, top-seller, view/Bí-danh
         public ViewResult ProductList(int page = 1,string state = "all", string category = "")
         {
-            ViewBag.Randomize = ProductService.GetRandomize();
+            //ViewBag.Randomize = ProductService.GetRandomize();
 
             // Hiển thị sản phẩm theo loại
             if (state == "view" && category != "")
@@ -40,11 +42,14 @@ namespace BTL_ASPdotNet.Controllers
             return View(ProductService.Paging(page, size, ProductService.TopSeller()));
         }
 
+        // /Detail/Bí-danh/page
         public ViewResult ProductDetail(string aliases,int ID)
         {
             var model = ProductService.FindByID(ID);
             ViewBag.MenuLeft = CategoryService.GetByAliases(aliases);
-            ViewBag.Randomize = ProductService.GetRandomize();
+            //ViewBag.Randomize = ProductService.GetRandomize();
+            ViewBag.Name = "Product Detail";
+            ViewBag.Availability = model.IsStopSelling ? "Out Of Stock" : "Stocking";
             return View(model);
         }
 

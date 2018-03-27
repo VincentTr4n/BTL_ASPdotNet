@@ -3,6 +3,8 @@
 @{
 	Layout = "/Views/Shared/_HomeUser.cshtml";
 	ViewBag.Title = "Home Page";
+	var features = ProductService.FeatureProducts();
+	var latest = ProductService.LatestProducts();
 }
 
 <section class="homepage-slider" id="home-slider">
@@ -41,7 +43,7 @@
 						<div class="carousel-inner">
 							<div class="active item">
 								<ul class="thumbnails">
-									@foreach (var item in ProductService.FeatureProducts().Take(4))
+									@foreach (var item in features.Take(4))
 									{
 										<li class="span3">
 											<div class="product-box">
@@ -57,7 +59,7 @@
 							</div>
 							<div class="item">
 								<ul class="thumbnails">
-									@foreach (var item in ProductService.FeatureProducts().Skip(4).Take(4))
+									@foreach (var item in features.Skip(4).Take(4))
 									{
 										<li class="span3">
 											<div class="product-box">
@@ -88,7 +90,7 @@
 						<div class="carousel-inner">
 							<div class="active item">
 								<ul class="thumbnails">
-									@foreach (var item in ProductService.LatestProducts().Take(4))
+									@foreach (var item in latest.Take(4))
 									{
 										<li class="span3">
 											<div class="product-box">
@@ -104,7 +106,7 @@
 							</div>
 							<div class="item">
 								<ul class="thumbnails">
-									@foreach (var item in ProductService.LatestProducts().Skip(4).Take(4))
+									@foreach (var item in latest.Skip(4).Take(4))
 									{
 										<li class="span3">
 											<div class="product-box">

@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 @using System.Globalization
+@using BTL_ASPdotNet.Services
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
@@ -18,12 +19,14 @@
 	<!-- global styles -->
 	<link href="~/Content/themes/css/flexslider.css" rel="stylesheet" />
 	<link href="~/Content/themes/css/main.css" rel="stylesheet" />
+	<link href="~/Content/themes/css/jquery.fancybox.css" rel="stylesheet" />
 
 	<!-- scripts -->
 	<script src="~/Content/themes/js/jquery-1.7.2.min.js"></script>
 	<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
 	<script src="~/Content/themes/js/superfish.js"></script>
 	<script src="~/Content/themes/js/jquery.scrolltotop.js"></script>
+	<script src="~/Content/themes/js/jquery.fancybox.js"></script>
 
 
 	<style>
@@ -32,6 +35,9 @@
 			height: 342px;
 		}
 	</style>
+	@{
+		ViewBag.Randomize = ProductService.GetRandomize();
+	}
 </head>
 <body>
 	<div id="top-bar" class="container">
@@ -163,8 +169,7 @@
 				<div class="span3">
 					<h4>Navigation</h4>
 					<ul class="nav">
-						li>
-						<a href="@Url.Action("Index","Home")">Homepage</a></li>
+						<li><a href="@Url.Action("Index","Home")">Homepage</a></li>
 						<li><a href="@Url.Action("About","Home")">About Us</a></li>
 						<li><a href="@Url.Action("Contact","Home")">Contac Us</a></li>
 						<li><a href="#">Your Cart</a></li>
@@ -201,22 +206,36 @@
 	<script src="~/Content/themes/js/jquery.flexslider-min.js"></script>
 	<script type="text/javascript">
 		$(function () {
-			$(document).ready(function () {
-				$('.flexslider').flexslider({
-					animation: "fade",
-					slideshowSpeed: 4000,
-					animationSpeed: 600,
-					controlNav: false,
-					directionNav: true,
-					controlsContainer: ".flex-container" // the container that holds the flexslider
-				});
+			$('#myTab a:first').tab('show');
+			$('#myTab a').click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			})
+		})
+		$(document).ready(function () {
+			$('.flexslider').flexslider({
+				animation: "fade",
+				slideshowSpeed: 4000,
+				animationSpeed: 600,
+				controlNav: false,
+				directionNav: true,
+				controlsContainer: ".flex-container" // the container that holds the flexslider
+			});
 
-				$('#ulSubCategory li').each(function (i) {
-					$(this).on('click', function () {
-						$('#ulSubCategory li.active').removeClass('active');
-						$(this).addClass('active');
-					})
-				});
+			$('#ulSubCategory li').each(function (i) {
+				$(this).on('click', function () {
+					$('#ulSubCategory li.active').removeClass('active');
+					$(this).addClass('active');
+				})
+			});
+
+			$('.thumbnail').fancybox({
+				openEffect: 'none',
+				closeEffect: 'none'
+			});
+
+			$('#myCarousel-2').carousel({
+				interval: 2500
 			});
 		});
 	</script>

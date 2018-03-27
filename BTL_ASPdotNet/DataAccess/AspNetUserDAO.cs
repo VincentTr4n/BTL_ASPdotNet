@@ -8,6 +8,7 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class AspNetUserDAO : IAspNetUserDAO
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(AspNetUser obj)
         {
             throw new NotImplementedException();
@@ -25,10 +26,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public AspNetUser FindByName(string name)
         {
-            using(StoreOlineEntities db = new StoreOlineEntities())
-            {
-                return db.AspNetUsers.SingleOrDefault(u => u.UserName.Trim() == name);
-            }
+            return db.AspNetUsers.SingleOrDefault(u => u.UserName.Trim() == name);
         }
 
         public IEnumerable<AspNetUser> GetAll()

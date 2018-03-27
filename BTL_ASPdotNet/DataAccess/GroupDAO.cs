@@ -8,6 +8,7 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class GroupDAO : IGroupDAO
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(GroupProduct obj)
         {
             throw new NotImplementedException();
@@ -30,17 +31,13 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<GroupProduct> GetListByAliases(string aliases)
         {
-            using(StoreOlineEntities db = new StoreOlineEntities())
+            var category = db.Categories.SingleOrDefault(c => c.Aliases.Trim() == aliases);
+            if (category == null)
             {
-                var category = db.Categories.SingleOrDefault(c => c.Aliases.Trim() == aliases);
-                if(category == null)
-                {
-                    var group = db.GroupProducts.SingleOrDefault(g => g.Aliases.Trim() == aliases);
-                    return db.Categories.SingleOrDefault(c => c.CategoryID == group.CategoryID).GroupProducts;
-                }
-                return category.GroupProducts;
+                var group = db.GroupProducts.SingleOrDefault(g => g.Aliases.Trim() == aliases);
+                return db.Categories.SingleOrDefault(c => c.CategoryID == group.CategoryID).GroupProducts;
             }
-            
+            return category.GroupProducts;
         }
 
         public bool Update(GroupProduct obj)

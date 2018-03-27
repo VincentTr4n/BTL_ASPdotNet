@@ -104,26 +104,6 @@
     <Property Name="DateEnter" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="IsChecked" Type="Boolean" Nullable="false" />
   </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Total" Type="Int32" Nullable="false" />
-    <Property Name="IsShipping" Type="Boolean" Nullable="false" />
-    <Property Name="ShippingDate" Type="DateTime" Precision="3" />
-    <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Fax" Type="Int64" />
-    <Property Name="CountryID" Type="Int32" />
-    <Property Name="Postcode" Type="Int64" />
-    <NavigationProperty Name="OrderDets" Relationship="Self.FK_DatHangCT_DatHang" FromRole="Order" ToRole="OrderDet" />
-  </EntityType>
   <EntityType Name="OrderDet">
     <Key>
       <PropertyRef Name="OrderID" />
@@ -134,8 +114,8 @@
     <Property Name="Quantity" Type="Int32" Nullable="false" />
     <Property Name="Price" Type="Int64" Nullable="false" />
     <Property Name="Total" Type="Int64" Nullable="false" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_DatHangCT_DatHang" FromRole="OrderDet" ToRole="Order" />
     <NavigationProperty Name="Product" Relationship="Self.FK_DatHangCT_SanPham" FromRole="OrderDet" ToRole="Product" />
+    <NavigationProperty Name="Order" Relationship="BTLWebASPModel.FK_DatHangCT_DatHang" FromRole="OrderDet" ToRole="Order" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -216,18 +196,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DatHangCT_DatHang">
-    <End Role="Order" Type="Self.Order" Multiplicity="1" />
-    <End Role="OrderDet" Type="Self.OrderDet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Order">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="OrderDet">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DatHangCT_SanPham">
     <End Role="Product" Type="Self.Product" Multiplicity="1" />
     <End Role="OrderDet" Type="Self.OrderDet" Multiplicity="*" />
@@ -254,7 +222,6 @@
     <EntitySet Name="Countries" EntityType="Self.Country" />
     <EntitySet Name="GroupProducts" EntityType="Self.GroupProduct" />
     <EntitySet Name="MailBoxes" EntityType="Self.MailBox" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="OrderDets" EntityType="Self.OrderDet" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -274,10 +241,6 @@
       <End Role="GroupProduct" EntitySet="GroupProducts" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="FK_DatHangCT_DatHang" Association="Self.FK_DatHangCT_DatHang">
-      <End Role="Order" EntitySet="Orders" />
-      <End Role="OrderDet" EntitySet="OrderDets" />
-    </AssociationSet>
     <AssociationSet Name="FK_DatHangCT_SanPham" Association="Self.FK_DatHangCT_SanPham">
       <End Role="Product" EntitySet="Products" />
       <End Role="OrderDet" EntitySet="OrderDets" />
@@ -286,5 +249,43 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="Orders" EntityType="BTLWebASPModel.Order" />
+    <AssociationSet Name="FK_DatHangCT_DatHang" Association="BTLWebASPModel.FK_DatHangCT_DatHang">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDet" EntitySet="OrderDets" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="IsShipping" Type="Boolean" Nullable="false" />
+    <Property Name="ShippingDate" Type="DateTime" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="Int64" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="Postcode" Type="Int64" />
+    <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDets" Relationship="BTLWebASPModel.FK_DatHangCT_DatHang" FromRole="Order" ToRole="OrderDet" />
+  </EntityType>
+  <Association Name="FK_DatHangCT_DatHang">
+    <End Type="BTLWebASPModel.Order" Role="Order" Multiplicity="1" />
+    <End Type="BTLWebASPModel.OrderDet" Role="OrderDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDet">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

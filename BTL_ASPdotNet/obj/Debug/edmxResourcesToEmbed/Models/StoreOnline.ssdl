@@ -121,6 +121,7 @@
     <Property Name="Fax" Type="bigint" />
     <Property Name="CountryID" Type="int" />
     <Property Name="Postcode" Type="bigint" />
+    <Property Name="City" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="OrderDet">
     <Key>
