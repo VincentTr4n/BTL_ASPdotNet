@@ -16,7 +16,7 @@ namespace BTL_ASPdotNet.Models
         }
         public void Remove(Product product) => list.RemoveAll(p => p.product.ProductID == product.ProductID);
         public void Clear() => list.Clear();
-        public long TotalValue => list.Sum(p => p.product.Price);
+        public long TotalValue => list.Sum(p => p.product.Price * p.Quantity);
         public IEnumerable<CartLine> Lines => list;
     }
 
