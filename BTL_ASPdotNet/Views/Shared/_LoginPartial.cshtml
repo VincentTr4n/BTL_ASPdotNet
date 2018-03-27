@@ -6,10 +6,10 @@
     @Html.AntiForgeryToken()
 
     <ul class="user-menu">
-		<li><a href="#">My Account</a></li>
 		<li><a href="@Url.Action("Index","Cart",new { @returnUrl = Request.Url.PathAndQuery })">Your Cart</a></li>
 		<li><a href="checkout.html">Checkout</a></li>
-        <li>
+		<li><a href="#">My Account</a></li>
+		<li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>

@@ -1,0 +1,134 @@
+﻿@using BTL_ASPdotNet.Services
+@model BTL_ASPdotNet.Models.Order
+@{
+	ViewBag.Title = "CheckOut";
+	Layout = "~/Views/Shared/_HomeUser.cshtml";
+	ViewBag.Name = "CHECK OUT";
+	var list = CountryService.GetAll();
+	<style>
+		.field-validation-error { color: #f00; }
+		.field-validation-valid { display: none; }
+		.input-validation-error { border: 1px solid #f00; background-color:#fee; }
+		.validation-summary-errors { font-weight: bold; color: #f00;}
+		.validation-summary-valid { display: none; }
+	</style>
+}
+<section class="header_text sub">
+	<img class="pageBanner" src="~/Content/themes/images/pageBanner.png" alt="New products">
+	<h4><span>Check Out</span></h4>
+</section>	
+<section class="main-content">
+	<div class="row">
+		<div class="span12">
+			@using (Html.BeginForm())
+			{
+				<div class="accordion" id="accordion2">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Account &amp; Billing Details</a>
+						</div>
+						<div id="collapseTwo" class="accordion-body">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div class="span6">
+										<h4>Your Personal Details</h4>
+										@Html.ValidationSummary()
+										<div class="control-group">
+											<label class="control-label">Your Name</label>
+											<div class="controls">
+												@*<input type="text" placeholder="" class="input-xlarge">*@
+												@Html.TextBoxFor(t => t.Name, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Email Address</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.Email, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Telephone</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.Phone, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Fax</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.Fax, new { @class = "input-xlarge" })
+											</div>
+										</div>
+									</div>
+									<div class="span6">
+										<h4>Your Address</h4>
+										<div class="control-group">
+											<label class="control-label">Company</label>
+											<div class="controls">
+												<input type="text" placeholder="" class="input-xlarge">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Company ID:</label>
+											<div class="controls">
+												<input type="text" placeholder="" class="input-xlarge">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label"><span class="required">*</span> Address 1:</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.Address, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label">Address 2:</label>
+											<div class="controls">
+												<input type="text" placeholder="" class="input-xlarge">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label"><span class="required">*</span> City:</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.City, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label"><span class="required">*</span> Post Code:</label>
+											<div class="controls">
+												@Html.TextBoxFor(t => t.Postcode, new { @class = "input-xlarge" })
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label"><span class="required">*</span> Country:</label>
+											<div class="controls">
+												@Html.DropDownList("CountryID", new SelectList(list, "CountryID", "CountryName"), new { @class = "input-xlarge" })
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Confirm Order</a>
+						</div>
+						<div id="collapseThree" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<div class="row-fluid">
+									<div class="control-group">
+										<label for="textarea" class="control-label">Comments</label>
+										<div class="controls">
+											@*<textarea rows="3" id="textarea" class="span12"></textarea>*@
+											@Html.TextAreaFor(t => t.Note, new {@class = "span12", @row = 3})
+										</div>
+									</div>
+									<button class="btn btn-inverse pull-right">Confirm order</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+</section>

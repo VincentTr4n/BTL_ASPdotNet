@@ -8,29 +8,41 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class OrderDAO : IOrderDAO
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(Order obj)
         {
-            throw new NotImplementedException();
+            var tmp = db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID);
+            if (tmp != null) return false;
+            db.Orders.Add(obj);
+            db.SaveChanges();
+            return true;
         }
 
         public Order Delete(Order obj)
         {
-            throw new NotImplementedException();
+            var tmp = db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID);
+            if (tmp != null) db.Orders.Remove(obj);
+            db.SaveChanges();
+            return tmp;
         }
 
         public Order FindByID(object ID)
         {
-            throw new NotImplementedException();
+            return db.Orders.SingleOrDefault(o => o.OrderID == (int)ID);
         }
 
         public IEnumerable<Order> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Orders;
         }
 
         public bool Update(Order obj)
         {
-            throw new NotImplementedException();
+            if (db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID) == null) return false;
+            db.Orders.Attach(obj);
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return true;
         }
     }
 }

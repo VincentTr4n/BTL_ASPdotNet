@@ -89,6 +89,13 @@ namespace BTL_ASPdotNet
                 defaults: new { controller = "Cart", action = "RemoveFromCart" },
                 namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
             );
+
+            routes.MapRoute(
+                name: "Default10",
+                url: "check-out",
+                defaults: new { controller = "Cart", action = "CheckOut" },
+                namespaces: new string[] { "BTL_ASPdotNet.Controllers" }
+            );
             #endregion
         }
     }

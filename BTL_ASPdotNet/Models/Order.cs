@@ -25,16 +25,22 @@ namespace BTL_ASPdotNet.Models
 
         [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please enter the phone number")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Please enter the first address line")]
-        [Display(Name = "Line 1")]
         public string Address { get; set; }
+
+        [Required(ErrorMessage = "Please enter the email address")]
+        [EmailAddress]
         public string Email { get; set; }
         public System.DateTime OrderDate { get; set; }
         public int Total { get; set; }
         public bool IsShipping { get; set; }
         public Nullable<System.DateTime> ShippingDate { get; set; }
+
+        [Required(ErrorMessage = "Please enter note")]
         public string Note { get; set; }
         public string UserID { get; set; }
         public Nullable<long> Fax { get; set; }

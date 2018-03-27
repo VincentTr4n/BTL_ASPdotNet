@@ -31,12 +31,12 @@ namespace BTL_ASPdotNet.Models
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<GroupProduct> GroupProducts { get; set; }
         public virtual DbSet<MailBox> MailBoxes { get; set; }
         public virtual DbSet<OrderDet> OrderDets { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
     }
 }

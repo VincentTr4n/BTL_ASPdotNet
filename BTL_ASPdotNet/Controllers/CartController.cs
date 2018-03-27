@@ -6,11 +6,16 @@ using System.Web.Mvc;
 using BTL_ASPdotNet.Models;
 using BTL_ASPdotNet.Services;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
+using BTL_ASPdotNet.Helpers;
+using BTL_ASPdotNet.DataAccess;
 
 namespace BTL_ASPdotNet.Controllers
 {
     public class CartController : Controller
     {
+        
         public ViewResult Index(Cart cart, string returnUrl)
         {
             ViewBag.Name = "SHOPPING CART";
@@ -34,7 +39,12 @@ namespace BTL_ASPdotNet.Controllers
 
             if (ModelState.IsValid)
             {
+                ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
+                if (user != null) order.UserID = user.Id;
+                OrderService.Add(cart,order);
 
+                EmailHelper.SendMail(order.Email, "New order submitted!", CommonHelpers.FormatCart(cart, order));
+                cart.Clear();
                 return View("Completed");
             }
             return View(order);
@@ -68,6 +78,7 @@ namespace BTL_ASPdotNet.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
-        }
+        }
+
     }
 }

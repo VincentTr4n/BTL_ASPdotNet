@@ -74,14 +74,6 @@
     <Property Name="Aliases" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="GroupProducts" Relationship="Self.FK_Nhomsp_PhanLoai" FromRole="Category" ToRole="GroupProduct" />
   </EntityType>
-  <EntityType Name="Country">
-    <Key>
-      <PropertyRef Name="CountryID" />
-    </Key>
-    <Property Name="CountryID" Type="Int32" Nullable="false" />
-    <Property Name="CountryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Code" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
-  </EntityType>
   <EntityType Name="GroupProduct">
     <Key>
       <PropertyRef Name="GroupID" />
@@ -219,7 +211,6 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
-    <EntitySet Name="Countries" EntityType="Self.Country" />
     <EntitySet Name="GroupProducts" EntityType="Self.GroupProduct" />
     <EntitySet Name="MailBoxes" EntityType="Self.MailBox" />
     <EntitySet Name="OrderDets" EntityType="Self.OrderDet" />
@@ -249,12 +240,21 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="Countries" EntityType="BTLWebASPModel.Country" />
     <EntitySet Name="Orders" EntityType="BTLWebASPModel.Order" />
     <AssociationSet Name="FK_DatHangCT_DatHang" Association="BTLWebASPModel.FK_DatHangCT_DatHang">
       <End Role="Order" EntitySet="Orders" />
       <End Role="OrderDet" EntitySet="OrderDets" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="CountryName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="OrderID" />

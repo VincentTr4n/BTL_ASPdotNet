@@ -8,6 +8,7 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class CountryDAO : ICountryDAO
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(Country obj)
         {
             throw new NotImplementedException();
@@ -25,7 +26,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<Country> GetAll()
         {
-            throw new NotImplementedException();
+            return db.Countries;
         }
 
         public bool Update(Country obj)
