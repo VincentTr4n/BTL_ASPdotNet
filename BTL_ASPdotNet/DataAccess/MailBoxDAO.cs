@@ -8,6 +8,7 @@ namespace BTL_ASPdotNet.DataAccess
 {
     public class MailBoxDAO : IMailBoxDAO
     {
+        
         public bool Add(MailBox obj)
         {
             throw new NotImplementedException();
