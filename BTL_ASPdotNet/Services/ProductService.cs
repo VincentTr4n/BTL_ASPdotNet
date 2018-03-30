@@ -27,6 +27,8 @@ namespace BTL_ASPdotNet.Services
 
         public static IEnumerable<Product> GetRelated(int groupID) => GetAll().Where(p => p.GroupID == groupID).Take(6);
 
+        public static IEnumerable<Product> SearchProducts(string text) => GetAll().Where(p => p.Aliases.ToLower().Contains(text) || p.ProductName.ToLower().Contains(text));
+
         public static IEnumerable<Product> GetByText(string text)
             => productDAO.GetAll().Where(p => p.ProductName.ToLower().Contains(text) || p.Aliases.ToLower().Contains(text));
 

@@ -26,6 +26,16 @@ namespace BTL_ASPdotNet.Controllers
                 return View(ProductService.Paging(page, size, ProductService.GetByCategory(category)));
             }
 
+            // Hiển thị sản phẩm khi tìm kiếm
+            if (state == "search" && category != "")
+            {
+                ViewBag.Name = "Search Products";
+                ViewBag.State = state;
+                ViewBag.Category = category;
+                ViewBag.MenuLeft = CategoryService.GetByAliases("all");
+                return View(ProductService.Paging(page, size, ProductService.SearchProducts(category)));
+            }
+
             // Hiển thị tất cả sản phẩm
             ViewBag.Category = "";
             ViewBag.MenuLeft = CategoryService.GetByAliases("all");
@@ -53,5 +63,12 @@ namespace BTL_ASPdotNet.Controllers
             return View(model);
         }
 
+        // /search/text
+        [HttpPost]
+        public ActionResult SearchProducts(string text)
+        {
+            var temp = text;
+            return RedirectToAction("ProductList", new {page = 1, state = "search", category = text.ToLower() });
+        }
     }
 }

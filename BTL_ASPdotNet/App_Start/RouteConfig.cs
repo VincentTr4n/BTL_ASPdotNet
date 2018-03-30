@@ -44,7 +44,19 @@ namespace BTL_ASPdotNet
             );
 
             routes.MapRoute(
-                name: "Default4",
+                name: "products4",
+                url: "search",
+                defaults: new { controller = "Product", action = "SearchProducts", text = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "products235",
+                url: "search-result/{category}/{page}",
+                defaults: new { controller = "Product", action = "ProductList", page = UrlParameter.Optional, state = "search", category = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Default5",
                 url: "Detail/{aliases}",
                 defaults:
                 new
@@ -56,7 +68,7 @@ namespace BTL_ASPdotNet
             #endregion
 
             routes.MapRoute(
-                name: "Default5",
+                name: "Default23",
                 url: "Account/{action}",
                 defaults: new { controller = "Account", action = UrlParameter.Optional }
             );

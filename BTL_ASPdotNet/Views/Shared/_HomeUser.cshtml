@@ -37,9 +37,13 @@
 	<div id="top-bar" class="container">
 		<div class="row">
 			<div class="span4">
-				<form method="POST" class="search_form">
-					<input type="text" class="input-block-level search-query" Placeholder="eg. T-sirt">
-				</form>
+                @*<form method="post" herf="@Url.Action("SearchProducts", "Product", new { area = "" })">
+                    <input type="text" class="input-block-level search-query" name="text" Placeholder="eg. T-sirt">
+                </form>*@
+                @using (Html.BeginForm("SearchProducts", "Product", FormMethod.Post))
+                {
+                    <input type="text" class="input-block-level search-query" name="text" Placeholder="eg. T-sirt">
+                }
 			</div>
 			<div class="span8">
 				<div class="account pull-right">
