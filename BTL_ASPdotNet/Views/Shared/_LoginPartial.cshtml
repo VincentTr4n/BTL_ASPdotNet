@@ -7,7 +7,7 @@
 
     <ul class="user-menu">
 		<li><a href="@Url.Action("Index","Cart",new { @returnUrl = Request.Url.PathAndQuery })">Your Cart</a></li>
-		<li><a href="checkout.html">Checkout</a></li>
+		<li><a href="@Url.Action("CheckOut","Cart")">Checkout</a></li>
 		<li><a href="#">My Account</a></li>
 		<li>
             @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
@@ -20,7 +20,7 @@ else
 {
     <ul class="user-menu">
 		<li><a href="@Url.Action("Index","Cart",new { @returnUrl = Request.Url.PathAndQuery })">Your Cart</a></li>
-		<li><a href="checkout.html">Checkout</a></li>
+		<li><a href="@Url.Action("CheckOut","Cart")">Checkout</a></li>
         <li>@Html.ActionLink("Register", "Register", "Account", null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", new { @returnUrl = Request.Url.PathAndQuery }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
