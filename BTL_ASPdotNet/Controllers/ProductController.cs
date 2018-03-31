@@ -52,12 +52,11 @@ namespace BTL_ASPdotNet.Controllers
             return View(ProductService.Paging(page, size, ProductService.TopSeller()));
         }
 
-        // /Detail/Bí-danh/page
+        // /Detail/Bí-danh/id
         public ViewResult ProductDetail(string aliases,int ID)
         {
             var model = ProductService.FindByID(ID);
             ViewBag.MenuLeft = CategoryService.GetByAliases(aliases);
-            //ViewBag.Randomize = ProductService.GetRandomize();
             ViewBag.Name = "Product Detail";
             ViewBag.Availability = model.IsStopSelling ? "Out Of Stock" : "Stocking";
             return View(model);

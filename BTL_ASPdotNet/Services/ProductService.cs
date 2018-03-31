@@ -37,8 +37,8 @@ namespace BTL_ASPdotNet.Services
             var tmp = productDAO.FindByID(product.ProductID);
             if(tmp == null)
             {
-                int id = GetAll().Max(p => p.ProductID);
-                product.ProductID = id + 1;
+                //int id = GetAll().Max(p => p.ProductID);
+                //product.ProductID = id + 1;
                 productDAO.Add(product);
 
             }

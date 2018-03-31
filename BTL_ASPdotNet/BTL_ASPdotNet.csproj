@@ -202,6 +202,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReportsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="DataAccess\OrderDAO.cs" />
     <Compile Include="DataAccess\OrderDetDAO.cs" />
     <Compile Include="DataAccess\ProductDAO.cs" />
+    <Compile Include="DataAccess\ReportDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +259,8 @@
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\DayReport.cs" />
     <Compile Include="Models\GroupProduct.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>
     </Compile>
@@ -265,6 +269,7 @@
       <DependentUpon>StoreOnline.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MonthReport.cs" />
     <Compile Include="Models\Order.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>
     </Compile>
@@ -299,6 +304,7 @@
     <Compile Include="Services\CountryService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -7740,10 +7746,15 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\MyProfile.cshtml" />
     <Content Include="Areas\Admin\Views\AdProduct\Products.cshtml" />
+    <Content Include="Areas\Admin\Views\Reports\GetMonthReport.cshtml" />
+    <Content Include="Areas\Admin\Views\Reports\GetDayReport.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\canvasjs.min.js" />
+    <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
