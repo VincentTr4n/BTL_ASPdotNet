@@ -15,12 +15,18 @@
             @using (Html.BeginForm())
             {
                 <div class="form-inline">
-                    <label>Date picker</label>
-                    <div class="input-group">
+                    <label>From </label>
+                    <div class="input-group form-inline">
                         <div class="input-group-addon">
                             <i class="fa fa-clock-o"></i>
                         </div>
-                        <input type="text" class="form-control pull-right" name="date" id="reservationtime">
+                        <div class="input-group">
+                            @Html.TextBox("start", string.Empty, new { @class = "datepicker form-control pull-right", @type = "date" })
+                        </div>
+                        <strong>   To   </strong>
+                        <div class="input-group">
+                            @Html.TextBox("end", string.Empty, new { @class = "datepicker form-control pull-right", @type = "date" })
+                        </div>
                     </div>
                     <input type="submit" class="btn btn-warning" value="Select" />
                 </div>

@@ -15,10 +15,14 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult GetDayReport(string date)
+        public ActionResult GetDayReport(string start = null,string end = null)
         {
-            ViewBag.temp = date;
-            ViewBag.DataPoints = ReportService.GetDayReport(new DateTime(2017,2,1),new DateTime(2017,4,1));
+            if(start == null && end == null)
+            {
+                ViewBag.DataPoints = ReportService.GetDayReport(new DateTime(2017,1,1), new DateTime(2017,5,1));
+                return View();
+            }
+            ViewBag.DataPoints = ReportService.GetDayReport(DateTime.Parse(start), DateTime.Parse(end));
             return View();
         }
     }
