@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BTL_ASPdotNet.Helpers;
 using System.Web.Mvc;
+using BTL_ASPdotNet.Models;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNet.Identity;
 
 namespace BTL_ASPdotNet.Controllers
 {
@@ -10,6 +14,8 @@ namespace BTL_ASPdotNet.Controllers
     {
         public ActionResult Index()
         {
+            var user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
+            ViewBag.User = user == null ? "" : user.Id;
             return View();
         }
 

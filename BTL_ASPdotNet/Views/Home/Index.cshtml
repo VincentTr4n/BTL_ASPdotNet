@@ -1,10 +1,10 @@
 ﻿@using System.Globalization
 @using BTL_ASPdotNet.Services
 @{
-	Layout = "/Views/Shared/_HomeUser.cshtml";
-	ViewBag.Title = "Home Page";
-	var features = ProductService.FeatureProducts();
-	var latest = ProductService.LatestProducts();
+    Layout = "/Views/Shared/_HomeUser.cshtml";
+    ViewBag.Title = "Home Page";
+    IEnumerable<BTL_ASPdotNet.Models.Product> features = ProductService.FeatureProducts(ViewBag.User);
+    var latest = ProductService.LatestProducts();
 }
 
 <section class="homepage-slider" id="home-slider">

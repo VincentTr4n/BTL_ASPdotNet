@@ -235,6 +235,7 @@
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\PagingHelper.cs" />
     <Compile Include="Helpers\RandomStringGenerator.cs" />
+    <Compile Include="Helpers\RecommendedEngine.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>

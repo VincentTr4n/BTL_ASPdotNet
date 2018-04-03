@@ -1,15 +1,18 @@
 ﻿using BTL_ASPdotNet.DataAccess;
 using BTL_ASPdotNet.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BTL_ASPdotNet.Helpers;
 
 namespace BTL_ASPdotNet.Services
 {
     public class ProductService
     {
         static IProductDAO productDAO = new ProductDAO();
+        static RecommendedEngine recommend = new RecommendedEngine();
 
         public static IEnumerable<Product> GetAll() => productDAO.GetAll();
 
@@ -19,7 +22,19 @@ namespace BTL_ASPdotNet.Services
 
         public static IEnumerable<Product> LatestProducts() => productDAO.GetAll().OrderBy(p => p.DateEnter).Take(8);
 
-        public static IEnumerable<Product> FeatureProducts() => productDAO.GetAll().OrderByDescending(p => p.Price).Take(8);
+        public static IEnumerable<Product> FeatureProducts(string userID)
+        {
+            var tmp = productDAO.GetAll().OrderByDescending(p => p.Price).Take(8);
+            if (String.IsNullOrEmpty(userID)) return tmp;
+            var list = recommend.GetPredict(userID);
+            if (list == null) return tmp;
+            List<Product> result = new List<Product>();
+            foreach (var item in list) result.Add(productDAO.FindByID(item));
+            if (result.Count > 8) return result.Take(8);
+            result.AddRange(tmp.Take(8 - result.Count));
+            return result;
+            
+        }
 
         public static IEnumerable<Product> TopSeller() => productDAO.TopSeller();
 
