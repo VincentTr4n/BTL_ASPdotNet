@@ -19,6 +19,18 @@ namespace BTL_ASPdotNet.Helpers
             LoadData();
         }
 
+        public void Update(string userID,Order order)
+        {
+            if(users.Count > 0)
+            {
+                StoreOlineEntities db = new StoreOlineEntities();
+                foreach (var item in order.OrderDets)
+                {
+                    products[item.ProductID] += item.Quantity;
+                }
+            }
+        }
+
         void LoadData()
         {
             products = new Dictionary<int, int>();
