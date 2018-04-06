@@ -12,6 +12,7 @@ namespace BTL_ASPdotNet.Controllers
 {
     public class HomeController : Controller
     {
+        StoreOlineEntities db = new StoreOlineEntities();
         public ActionResult Index()
         {
             var user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
@@ -24,9 +25,20 @@ namespace BTL_ASPdotNet.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ViewResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Contact(MailBox mail)
+        {
+            if(ModelState.IsValid)
+            {
+                mail.DateEnter = DateTime.Now;
+                db.MailBoxes.Add(mail);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Contact");
         }
     }
 }
