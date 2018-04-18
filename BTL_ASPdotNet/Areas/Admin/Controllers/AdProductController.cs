@@ -20,10 +20,7 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
                 ViewBag.Text = table_search;
                 if (table_search == "") return View(ProductService.Paging(page, pageSize, temp));
                 return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
-
             }
-
-
         }
 
         public ViewResult Create()
@@ -49,28 +46,29 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                StoreOlineEntities db = new StoreOlineEntities();
-                product.DateEnter = DateTime.Now;
-                var temp = db.Products.Where(t => t.ProductID == product.ProductID).SingleOrDefault();
-                if (temp == null)
+                using(StoreOlineEntities db = new StoreOlineEntities())
                 {
-                    db.Products.Add(product);
-                    db.SaveChanges();
-                    TempData["message"] = product.ProductName + " has been added";
-                    return RedirectToAction("Products");
-                }
-                else
-                {
-                    using (StoreOlineEntities db1 = new StoreOlineEntities())
+                    product.DateEnter = DateTime.Now;
+                    var temp = db.Products.Where(t => t.ProductID == product.ProductID).SingleOrDefault();
+                    if (temp == null)
                     {
-                        db1.Entry(product).State = EntityState.Modified;
-                        db1.SaveChanges();
-                        TempData["message"] = product.ProductName + " has been saved";
+                        db.Products.Add(product);
+                        db.SaveChanges();
+                        TempData["message"] = product.ProductName + " has been added";
                         return RedirectToAction("Products");
                     }
+                    else
+                    {
+                        using (StoreOlineEntities db1 = new StoreOlineEntities())
+                        {
+                            db1.Entry(product).State = EntityState.Modified;
+                            db1.SaveChanges();
+                            TempData["message"] = product.ProductName + " has been saved";
+                            return RedirectToAction("Products");
+                        }
 
+                    }
                 }
-
             }
             return View(product);
         }
@@ -82,5 +80,7 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
             if (tmp != null) TempData["message"] = tmp.ProductName + " was deleted";
             return RedirectToAction("Products");
         }
+
+
     }
 }

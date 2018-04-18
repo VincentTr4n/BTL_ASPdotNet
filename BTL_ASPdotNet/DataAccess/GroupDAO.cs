@@ -26,7 +26,8 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<GroupProduct> GetAll()
         {
-            throw new NotImplementedException();
+            db = new StoreOlineEntities();
+            return db.GroupProducts;
         }
 
         public IEnumerable<GroupProduct> GetListByAliases(string aliases)

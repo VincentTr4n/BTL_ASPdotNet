@@ -21,5 +21,6 @@ namespace BTL_ASPdotNet.Services
             return result;
         }
         public static Category FindByAliases(string aliase) => GetAll().SingleOrDefault(t => t.Aliases.Trim() == aliase.Trim());
+        public static IEnumerable<GroupProduct> GetAllGroup() => groupDAO.GetAll();
     }
 }

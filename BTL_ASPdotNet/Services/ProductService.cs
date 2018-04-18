@@ -47,17 +47,16 @@ namespace BTL_ASPdotNet.Services
         public static IEnumerable<Product> GetByText(string text)
             => productDAO.GetAll().Where(p => p.ProductName.ToLower().Contains(text) || p.Aliases.ToLower().Contains(text));
 
-        public static void SaveChanges(Product product)
+        public static bool SaveChanges(Product product)
         {
             var tmp = productDAO.FindByID(product.ProductID);
             if(tmp == null)
             {
                 //int id = GetAll().Max(p => p.ProductID);
                 //product.ProductID = id + 1;
-                productDAO.Add(product);
-
+                return productDAO.Add(product);
             }
-            else productDAO.Update(product);
+            else return productDAO.Update(product);
         }
 
         public static Product Delete(Product product) => productDAO.Delete(product);

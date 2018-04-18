@@ -42,7 +42,7 @@
 	<div class="wrapper">
 		<header class="main-header">
 			<!-- Logo -->
-			<a href="index2.html" class="logo">
+			<a href="@Url.Action("Index","Admin",new { area = "Admin"})" class="logo">
 				<!-- mini logo for sidebar mini 50x50 pixels -->
 				<span class="logo-mini"><b>A</b>LT</span>
 				<!-- logo for regular state and mobile devices -->
@@ -289,17 +289,17 @@
 									<!-- /.row -->
 								</li>
 								<!-- Menu Footer-->
-								<li class="user-footer">
-									<div class="pull-left">
-										<a href="@Url.Action("MyProfile","Admin",new { @name = User.Identity.Name })" class="btn btn-default btn-flat">Profile</a>
-									</div>
-									<div class="pull-right">
-										<form action="@Url.Action("LogOff","Account", new { area = "" })" method="post">
-											@Html.AntiForgeryToken()
-											<button type="submit" data-toggle="tooltip" data-original-title="Sign out" data-placement="bottom" class="btn btn-default btn-flat">Sign out</button>
-										</form>
-									</div>
-								</li>
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="@Url.Action("MyProfile","Admin",new { @name = User.Identity.Name })" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <form action="@Url.Action("LogOff","Account", new { area = "" })" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" data-toggle="tooltip" data-original-title="Sign out" data-placement="bottom" class="btn btn-default btn-flat">Sign out</button>
+                                        </form>
+                                    </div>
+                                </li>
 							</ul>
 						</li>
 						<!-- Control Sidebar Toggle Button -->
@@ -348,7 +348,7 @@
 						</a>
 						<ul class="treeview-menu">
 							<li><a href="@Url.Action("Products","AdProduct",new { page = 1 ,table_search = ""})"><i class="fa fa-circle-o"></i> Products</a></li>
-							<li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+							<li><a href="@Url.Action("Index","Home",new { area = ""})"><i class="fa fa-circle-o"></i> My WebSite</a></li>
 						</ul>
 					</li>
 					<li class="treeview">
