@@ -2,6 +2,7 @@
 using BTL_ASPdotNet.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,19 +14,34 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
         static int pageSize = 10;
         public ActionResult Products(int page = 1, string table_search = "")
         {
-            ViewBag.Text = table_search;
-            if(table_search == "") return View(ProductService.Paging(page, pageSize, ProductService.GetAll()));
-            return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
+            using (StoreOlineEntities db1 = new StoreOlineEntities())
+            {
+                var temp = db1.Products.ToList();
+                ViewBag.Text = table_search;
+                if (table_search == "") return View(ProductService.Paging(page, pageSize, temp));
+                return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
+
+            }
+
+
         }
 
         public ViewResult Create()
         {
+            ViewBag.Mode = "Create";
             return View("Edit", new Product());
+
         }
 
         public ViewResult Edit(int ProductID)
         {
-            return View(ProductService.FindByID(ProductID));
+            using (StoreOlineEntities db2 = new StoreOlineEntities())
+            {
+                var temp = db2.Products.SingleOrDefault(t => t.ProductID == ProductID);
+                ViewBag.Mode = "Edit";
+                return View(temp);
+            }
+
         }
 
         [HttpPost]
@@ -33,14 +49,32 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                ProductService.SaveChanges(product);
-                TempData["message"] = product.ProductName + " has been saved";
-                return RedirectToAction("Products");
+                StoreOlineEntities db = new StoreOlineEntities();
+                product.DateEnter = DateTime.Now;
+                var temp = db.Products.Where(t => t.ProductID == product.ProductID).SingleOrDefault();
+                if (temp == null)
+                {
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                    TempData["message"] = product.ProductName + " has been added";
+                    return RedirectToAction("Products");
+                }
+                else
+                {
+                    using (StoreOlineEntities db1 = new StoreOlineEntities())
+                    {
+                        db1.Entry(product).State = EntityState.Modified;
+                        db1.SaveChanges();
+                        TempData["message"] = product.ProductName + " has been saved";
+                        return RedirectToAction("Products");
+                    }
+
+                }
+
             }
             return View(product);
         }
 
-        [HttpPost]
         public ActionResult Delete(int ProductID)
         {
             var product = ProductService.FindByID(ProductID);
