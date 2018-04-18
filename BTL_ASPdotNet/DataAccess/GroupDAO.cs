@@ -31,6 +31,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<GroupProduct> GetListByAliases(string aliases)
         {
+            db = new StoreOlineEntities();
             var category = db.Categories.SingleOrDefault(c => c.Aliases.Trim() == aliases);
             if (category == null)
             {

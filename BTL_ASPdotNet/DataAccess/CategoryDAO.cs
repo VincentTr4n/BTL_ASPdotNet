@@ -26,6 +26,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<Category> GetAll()
         {
+            db = new StoreOlineEntities();
             return db.Categories;
         }
 

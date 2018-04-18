@@ -12,7 +12,6 @@ namespace BTL_ASPdotNet.Controllers
 {
     public class HomeController : Controller
     {
-        StoreOlineEntities db = new StoreOlineEntities();
         public ActionResult Index()
         {
             var user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
@@ -34,9 +33,12 @@ namespace BTL_ASPdotNet.Controllers
         {
             if(ModelState.IsValid)
             {
-                mail.DateEnter = DateTime.Now;
-                db.MailBoxes.Add(mail);
-                db.SaveChanges();
+                using(StoreOlineEntities db = new StoreOlineEntities())
+                {
+                    mail.DateEnter = DateTime.Now;
+                    db.MailBoxes.Add(mail);
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Contact");
         }

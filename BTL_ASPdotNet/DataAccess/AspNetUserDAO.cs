@@ -26,6 +26,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public AspNetUser FindByName(string name)
         {
+            db = new StoreOlineEntities();
             return db.AspNetUsers.SingleOrDefault(u => u.UserName.Trim() == name);
         }
 

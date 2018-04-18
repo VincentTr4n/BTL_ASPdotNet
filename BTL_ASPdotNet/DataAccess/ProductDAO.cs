@@ -10,6 +10,7 @@ namespace BTL_ASPdotNet.DataAccess
         StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(Product obj)
         {
+            db = new StoreOlineEntities();
             var tmp = db.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
             if (tmp != null) return false;
             db.Products.Add(obj);
@@ -19,6 +20,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public Product Delete(Product obj)
         {
+            db = new StoreOlineEntities();
             var tmp = db.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
             db.Products.Remove(tmp);
             db.SaveChanges();
@@ -27,21 +29,25 @@ namespace BTL_ASPdotNet.DataAccess
 
         public Product FindByAliases(string aliases)
         {
+            db = new StoreOlineEntities();
             return db.Products.SingleOrDefault(p => p.Aliases.Trim() == aliases);
         }
 
         public Product FindByID(object ID)
         {
+            db = new StoreOlineEntities();
             return db.Products.SingleOrDefault(p => p.ProductID == (int)ID);
         }
 
         public IEnumerable<Product> GetAll()
         {
+            db = new StoreOlineEntities();
             return db.Products;
         }
 
         public IEnumerable<Product> GetByCategory(string category)
         {
+            db = new StoreOlineEntities();
             var result = db.Products.Where(p =>
                             p.GroupProduct.Category.Aliases.Trim() == category ||
                             p.GroupProduct.Aliases.Trim() == category);
@@ -50,20 +56,19 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<Product> TopSeller()
         {
+            db = new StoreOlineEntities();
             var result = db.Products.OrderByDescending(p => p.OrderDets.Sum(o => o.Quantity));
             return result;
         }
 
         public bool Update(Product obj)
         {
-            using(StoreOlineEntities db1 = new StoreOlineEntities())
-            {
-                var tmp = db1.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
-                if (tmp == null) return false;
-                db1.Products.Attach(obj);
-                db1.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-                db1.SaveChanges();
-            }
+            db = new StoreOlineEntities();
+            var tmp = db.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
+            if (tmp == null) return false;
+            db.Products.Attach(obj);
+            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
             return true;
         }
     }

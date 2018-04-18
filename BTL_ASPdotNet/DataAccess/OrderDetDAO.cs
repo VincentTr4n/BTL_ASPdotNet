@@ -11,6 +11,7 @@ namespace BTL_ASPdotNet.DataAccess
         StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(OrderDet obj)
         {
+            db = new StoreOlineEntities();
             var tmp = db.OrderDets.SingleOrDefault(o => o.OrderID == obj.OrderID && o.ProductID == obj.ProductID);
             if (tmp != null) return false;
             db.OrderDets.Add(obj);

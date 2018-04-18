@@ -11,11 +11,13 @@ namespace BTL_ASPdotNet.DataAccess
 
         public IEnumerable<MonthReport> GetMonthReport(int year)
         {
+            db = new StoreOlineEntities();
             return db.Orders.Where(t => t.OrderDate.Year == year).GroupBy(t => t.OrderDate.Month).Select(t => new MonthReport() { Month = t.Key,Total = t.Sum(o => o.Total) });
         }
 
         public IEnumerable<DayReport> GetDayReport(DateTime start, DateTime end)
         {
+            db = new StoreOlineEntities();
             var res = db.Orders.GroupBy(t => t.OrderDate).Where(t => t.Key >= start && t.Key <= end).Select(t => new DayReport() {date = t.Key, Total = t.Sum(o => o.Total) });
             return res;
         }

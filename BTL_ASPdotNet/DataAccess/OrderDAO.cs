@@ -11,6 +11,7 @@ namespace BTL_ASPdotNet.DataAccess
         StoreOlineEntities db = new StoreOlineEntities();
         public bool Add(Order obj)
         {
+            db = new StoreOlineEntities();
             var tmp = db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID);
             if (tmp != null) return false;
             db.Orders.Add(obj);
@@ -20,6 +21,7 @@ namespace BTL_ASPdotNet.DataAccess
 
         public Order Delete(Order obj)
         {
+            db = new StoreOlineEntities();
             var tmp = db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID);
             if (tmp != null) db.Orders.Remove(obj);
             db.SaveChanges();
@@ -28,16 +30,19 @@ namespace BTL_ASPdotNet.DataAccess
 
         public Order FindByID(object ID)
         {
+            db = new StoreOlineEntities();
             return db.Orders.SingleOrDefault(o => o.OrderID == (int)ID);
         }
 
         public IEnumerable<Order> GetAll()
         {
+            db = new StoreOlineEntities();
             return db.Orders;
         }
 
         public bool Update(Order obj)
         {
+            db = new StoreOlineEntities();
             if (db.Orders.SingleOrDefault(o => o.OrderID == obj.OrderID) == null) return false;
             db.Orders.Attach(obj);
             db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
