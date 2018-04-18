@@ -7749,6 +7749,7 @@
     <Content Include="Areas\Admin\Views\AdProduct\Products.cshtml" />
     <Content Include="Areas\Admin\Views\Reports\GetMonthReport.cshtml" />
     <Content Include="Areas\Admin\Views\Reports\GetDayReport.cshtml" />
+    <Content Include="Areas\Admin\Views\AdProduct\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\canvasjs.min.js" />
     <Content Include="Scripts\html5shiv.min.js" />
