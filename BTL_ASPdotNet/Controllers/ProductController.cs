@@ -19,10 +19,11 @@ namespace BTL_ASPdotNet.Controllers
             // Hiển thị sản phẩm theo loại
             if (state == "view" && category != "")
             {
-                ViewBag.Name = "Category";
+                var result = CategoryService.GetByAliases(category); 
+                ViewBag.Name = "Category - " + (result.ContainsKey(category) ? result[category] : CategoryService.FindByAliases(category).CategoryName);
                 ViewBag.State = state;
                 ViewBag.Category = category;
-                ViewBag.MenuLeft = CategoryService.GetByAliases(category);
+                ViewBag.MenuLeft = result;
                 return View(ProductService.Paging(page, size, ProductService.GetByCategory(category)));
             }
 

@@ -20,5 +20,6 @@ namespace BTL_ASPdotNet.Services
             else groupDAO.GetListByAliases(aliases).ToList().ForEach(item => result.Add(item.Aliases, item.GroupName));
             return result;
         }
+        public static Category FindByAliases(string aliase) => GetAll().SingleOrDefault(t => t.Aliases.Trim() == aliase.Trim());
     }
 }

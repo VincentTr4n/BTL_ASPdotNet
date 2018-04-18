@@ -56,11 +56,14 @@ namespace BTL_ASPdotNet.DataAccess
 
         public bool Update(Product obj)
         {
-            var tmp = db.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
-            if (tmp == null) return false;
-            db.Products.Attach(obj);
-            db.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            using(StoreOlineEntities db1 = new StoreOlineEntities())
+            {
+                var tmp = db1.Products.SingleOrDefault(t => t.ProductID == obj.ProductID);
+                if (tmp == null) return false;
+                db1.Products.Attach(obj);
+                db1.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+                db1.SaveChanges();
+            }
             return true;
         }
     }
