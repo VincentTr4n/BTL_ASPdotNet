@@ -11,17 +11,17 @@ namespace BTL_ASPdotNet.Helpers
         public int[,] data { get; set; }
         public int N { get; set; }
         public int M { get; set; }
-        public Dictionary<string,int> users { get; set; }
-        public Dictionary<int,int> products { get; set; }
+        public Dictionary<string, int> users { get; set; }
+        public Dictionary<int, int> products { get; set; }
 
         public RecommendedEngine()
         {
             LoadData();
         }
 
-        public void Update(string userID,Order order)
+        public void Update(string userID, Order order)
         {
-            if(users.Count > 0)
+            if (users.Count > 0)
             {
                 StoreOlineEntities db = new StoreOlineEntities();
                 foreach (var item in order.OrderDets)
@@ -39,9 +39,9 @@ namespace BTL_ASPdotNet.Helpers
             StoreOlineEntities db = new StoreOlineEntities();
             var listProduct = db.Products.ToList();
             int ii = 0;
-            foreach(var item in listProduct) products.Add(item.ProductID, ii++);
+            foreach (var item in listProduct) products.Add(item.ProductID, ii++);
 
-            var temp = db.OrderDets.Select(t => new UserToProduct() {UserID = t.Order.UserID,ProductID = t.ProductID,Quantity = t.Quantity }).ToList();
+            var temp = db.OrderDets.Select(t => new UserToProduct() { UserID = t.Order.UserID, ProductID = t.ProductID, Quantity = t.Quantity }).ToList();
             var buffer = temp.GroupBy(t => t.UserID).ToList();
             for (int i = 0; i < buffer.Count; i++) users.Add(buffer[i].Key, i);
 
@@ -49,20 +49,21 @@ namespace BTL_ASPdotNet.Helpers
             M = products.Count;
             data = new int[N, M];
 
-            for (int i = 0; i < N; i++)
+            for (int i = 5; i < N; i++)
             {
                 var item = buffer[i].GroupBy(t => t.ProductID).Select(t => new { ID = t.Key, Total = t.Sum(o => o.Quantity) }).ToList();
                 int index = 0;
                 int j = 0;
                 foreach (var item1 in products)
                 {
+                    if (index >= item.Count) break;
                     if (item[index].ID == item1.Value)
                     {
                         if (j >= M) break;
                         data[i, j] = item[index].Total;
                         index++;
-                        j++;
                     }
+                    j++;
                 }
             }
 
@@ -72,7 +73,7 @@ namespace BTL_ASPdotNet.Helpers
             List<ProductResult> res = new List<ProductResult>();
             int index = -1;
             if (users.ContainsKey(userID)) index = users[userID];
-            if(index != -1)
+            if (index != -1)
             {
                 foreach (var item in products)
                 {
@@ -115,7 +116,7 @@ namespace BTL_ASPdotNet.Helpers
             }
 
             double tmp = (Math.Sqrt(sum2) * Math.Sqrt(sum3));
-            res = (double)sum1 / tmp;
+            if (tmp != 0) res = (double)sum1 / tmp;
             return res;
         }
 

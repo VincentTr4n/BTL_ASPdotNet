@@ -1,6 +1,8 @@
 ﻿using BTL_ASPdotNet.DataAccess;
 using BTL_ASPdotNet.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BTL_ASPdotNet.Services
 {
@@ -28,5 +30,19 @@ namespace BTL_ASPdotNet.Services
                 });
             }
         }
+        public static IEnumerable<Order> GetAll() => orderDAO.GetAll();
+        public static OrderViewModel Paging(int page, int pageSize, IEnumerable<Order> list)
+            => new OrderViewModel()
+            {
+                 Orders = list.Skip((page - 1) * pageSize).Take(pageSize),
+                 pagingInfo = new PagingInfo()
+                 {
+                     CurrentPage = page,
+                     ItemPerPage = pageSize,
+                     TotalItems = list.Count()
+                 }
+            };
+
+
     }
 }

@@ -202,6 +202,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ReportsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -277,6 +278,7 @@
     <Compile Include="Models\OrderDet.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>StoreOnline.tt</DependentUpon>
@@ -319,6 +321,7 @@
     <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="Content\bootstrap\js\bootstrap.js" />
     <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\jquery-3.3.1.min.js" />
     <Content Include="Content\ProductImages\1.jpg" />
     <Content Include="Content\ProductImages\10.jpg" />
     <Content Include="Content\ProductImages\100.jpg" />
@@ -7750,6 +7753,7 @@
     <Content Include="Areas\Admin\Views\Reports\GetMonthReport.cshtml" />
     <Content Include="Areas\Admin\Views\Reports\GetDayReport.cshtml" />
     <Content Include="Areas\Admin\Views\AdProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\canvasjs.min.js" />
     <Content Include="Scripts\html5shiv.min.js" />

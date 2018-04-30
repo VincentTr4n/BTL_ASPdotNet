@@ -14,13 +14,10 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
         static int pageSize = 10;
         public ActionResult Products(int page = 1, string table_search = "")
         {
-            using (StoreOlineEntities db1 = new StoreOlineEntities())
-            {
-                var temp = db1.Products.ToList();
-                ViewBag.Text = table_search;
-                if (table_search == "") return View(ProductService.Paging(page, pageSize, temp));
-                return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
-            }
+            var temp = ProductService.GetAll();
+            ViewBag.Text = table_search;
+            if (table_search == "") return View(ProductService.Paging(page, pageSize, temp));
+            return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
         }
 
         public ViewResult Create()
@@ -46,9 +43,9 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                using(StoreOlineEntities db = new StoreOlineEntities())
+                product.DateEnter = DateTime.Now;
+                using (StoreOlineEntities db = new StoreOlineEntities())
                 {
-                    product.DateEnter = DateTime.Now;
                     var temp = db.Products.Where(t => t.ProductID == product.ProductID).SingleOrDefault();
                     if (temp == null)
                     {
