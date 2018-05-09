@@ -19,19 +19,20 @@ namespace BTL_ASPdotNet.Helpers
             LoadData();
         }
 
-        public void Update(string userID, Order order)
+        public void Update(Order order)
         {
-            if (users.Count > 0)
+            if (users.ContainsKey(order.UserID))
             {
                 StoreOlineEntities db = new StoreOlineEntities();
+                int index = users[order.UserID];
                 foreach (var item in order.OrderDets)
                 {
-                    products[item.ProductID] += item.Quantity;
+                    data[index, products[item.ProductID]] += item.Quantity;
                 }
             }
         }
 
-        void LoadData()
+        public void LoadData()
         {
             products = new Dictionary<int, int>();
             users = new Dictionary<string, int>();
@@ -49,7 +50,7 @@ namespace BTL_ASPdotNet.Helpers
             M = products.Count;
             data = new int[N, M];
 
-            for (int i = 5; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 var item = buffer[i].GroupBy(t => t.ProductID).Select(t => new { ID = t.Key, Total = t.Sum(o => o.Quantity) }).ToList();
                 int index = 0;

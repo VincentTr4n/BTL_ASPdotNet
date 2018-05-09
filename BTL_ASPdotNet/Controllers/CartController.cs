@@ -41,7 +41,9 @@ namespace BTL_ASPdotNet.Controllers
             {
                 ApplicationUser user = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId());
                 if (user != null) order.UserID = user.Id;
+                else order.UserID = "online";
                 OrderService.Add(cart,order);
+                ProductService.Update(order);
 
                 EmailHelper.SendMail(order.Email, "New order submitted!", CommonHelpers.FormatCart(cart, order));
                 cart.Clear();

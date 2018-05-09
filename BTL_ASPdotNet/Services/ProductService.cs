@@ -36,6 +36,8 @@ namespace BTL_ASPdotNet.Services
             
         }
 
+        public static void Update(Order order) => recommend.Update(order);
+
         public static IEnumerable<Product> TopSeller() => productDAO.TopSeller();
 
         public static IEnumerable<Product> GetByCategory(string category) => productDAO.GetByCategory(category);

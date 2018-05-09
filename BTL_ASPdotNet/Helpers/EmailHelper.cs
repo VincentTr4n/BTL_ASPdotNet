@@ -34,10 +34,16 @@ namespace BTL_ASPdotNet.Helpers
                 mess.To.Add(new MailAddress(mailToAddress));
                 mess.Subject = subject;
                 mess.Body = content;
-                
 
+                try
+                {
+                    client.Send(mess);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
 
-                client.Send(mess);
             }
         }
 
