@@ -20,19 +20,21 @@ namespace BTL_ASPdotNet.Areas.Admin.Controllers
             return View(ProductService.Paging(page, pageSize, ProductService.GetByText(table_search.ToLower())));
         }
 
-        public ViewResult Create()
+        public ViewResult Create(string returnUrl)
         {
             ViewBag.Mode = "Create";
+            ViewBag.ReturnUrl = returnUrl;
             return View("Edit", new Product());
 
         }
 
-        public ViewResult Edit(int ProductID)
+        public ViewResult Edit(int ProductID, string returnUrl)
         {
             using (StoreOlineEntities db2 = new StoreOlineEntities())
             {
                 var temp = db2.Products.SingleOrDefault(t => t.ProductID == ProductID);
                 ViewBag.Mode = "Edit";
+                ViewBag.ReturnUrl = returnUrl;
                 return View(temp);
             }
 
